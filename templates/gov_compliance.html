@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Compliance Monitoring</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #F3F3E0;
+            font-family: 'Segoe UI', sans-serif;
+            padding: 30px;
+        }
+        h2 {
+            color: #183B4E;
+            margin-bottom: 20px;
+        }
+        .table thead {
+            background-color: #27548A;
+            color: white;
+        }
+        .low-compliance {
+            background-color: #f8d7da;
+        }
+        .table td, .table th {
+            vertical-align: middle;
+        }
+        .btn-back {
+            background-color: #DDA853;
+            color: #183B4E;
+            border: none;
+            margin-top: 20px;
+        }
+        .btn-back:hover {
+            background-color: #c99246;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Compliance Monitoring</h2>
+
+        {% if compliance %}
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Transaction ID</th>
+                        <th>PRS ID</th>
+                        <th>Name</th>
+                        <th>Date of Birth</th>
+                        <th>Item</th>
+                        <th>Quantity</th>
+                        <th>Store</th>
+                        <th>Purchase Date</th>
+                        <th>Compliance Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in compliance %}
+                    <tr class="{% if 'Over_Limit' in row.Compliance_Status or 'Invalid_Day' in row.Compliance_Status %}low-compliance{% endif %}">
+                        <td>{{ row.Transaction_Id }}</td>
+                        <td>{{ row.PRS_Id }}</td>
+                        <td>{{ row.Name }}</td>
+                        <td>{{ row.DOB }}</td>
+                        <td>{{ row.Item_Name }}</td>
+                        <td>{{ row.Quantity_Purchased }}</td>
+                        <td>{{ row.Store_Id }}</td>
+                        <td>{{ row.Purchase_Date }}</td>
+                        <td><strong>{{ row.Compliance_Status|safe }}</strong></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No compliance data available.</p>
+        {% endif %}
+
+        <a href="{{ url_for('gov_dashboard') }}" class="btn btn-back">← Back to Dashboard</a>
+    </div>
+
+</body>
+</html>

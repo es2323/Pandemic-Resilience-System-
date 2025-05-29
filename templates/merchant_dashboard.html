@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Merchant Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #F3F3E0;
+            font-family: 'Segoe UI', sans-serif;
+            padding: 30px;
+        }
+        .dashboard-title {
+            font-size: 2rem;
+            color: #183B4E;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        .card-link {
+            text-decoration: none;
+            color: inherit;
+        }
+        .card {
+            border: none;
+            border-radius: 15px;
+            background-color: #27548A;
+            color: white;
+            transition: 0.3s;
+        }
+        .card:hover {
+            background-color: #183B4E;
+            transform: scale(1.05);
+        }
+        .logout-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="dashboard-title">Welcome to the Merchant Dashboard</div>
+
+    <div class="row justify-content-center g-4">
+        <div class="col-md-4">
+            <a href="{{ url_for('merchant_inventory') }}" class="card card-link p-4">
+                <h5>Manage Inventory</h5>
+                <p>Update stock levels, view inventory records</p>
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a href="{{ url_for('merchant_sales') }}" class="card card-link p-4">
+                <h5>Report Sales</h5>
+                <p>Log restricted item sales for compliance</p>
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a href="{{ url_for('merchant_compliance') }}" class="card card-link p-4">
+                <h5>Compliance Summary</h5>
+                <p>Check sales vs. restriction rules</p>
+            </a>
+        </div>
+    </div>
+
+    <a href="{{ url_for('logout') }}" class="btn btn-warning logout-btn">Logout</a>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
