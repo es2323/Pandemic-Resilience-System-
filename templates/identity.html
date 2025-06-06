@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My PRS Info</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #F3F3E0;
+            padding: 30px;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        h2 {
+            color: #27548A;
+            margin-bottom: 25px;
+        }
+        .table th {
+            background-color: #183B4E;
+            color: white;
+            width: 30%;
+        }
+        .table td {
+            background-color: white;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            color: #27548A;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            color: #183B4E;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>My PRS Details</h2>
+    <table class="table table-bordered">
+        <tr><th>PRS ID</th><td>{{ prs_info.PRS_Id }}</td></tr>
+        <tr><th>National Identifier</th><td>{{ prs_info.National_Identifier }}</td></tr>
+        <tr><th>Name</th><td>{{ prs_info.Name }}</td></tr>
+        <tr><th>Date of Birth</th><td>{{ prs_info.Date_of_Birth }}</td></tr>
+        <tr><th>Email</th><td>{{ prs_info.Email }}</td></tr>
+        <tr><th>Emergency Contact Name</th><td>{{ prs_info.Emergency_Contact_Name }}</td></tr>
+        <tr><th>Emergency Contact Phone</th><td>{{ prs_info.Emergency_Contact_Phone }}</td></tr>
+    </table>
+
+    <a href="{{ url_for('dashboard') }}" class="back-link">← Back to Dashboard</a>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

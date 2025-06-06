@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Supplies</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #F3F3E0;
+            padding: 30px;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        h2 {
+            color: #27548A;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        .table thead {
+            background-color: #183B4E;
+            color: white;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            color: #27548A;
+        }
+        .back-link:hover {
+            color: #183B4E;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h2>Available Stores</h2>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Store ID</th>
+                <th>Address</th>
+                <th>Type</th>
+                <th>Hours</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for store in stores %}
+        <tr>
+            <td>{{ store.Store_Id }}</td>
+            <td>{{ store.Address }}</td>
+            <td>{{ store.Store_Type }}</td>
+            <td>{{ store.Operational_Hours }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Critical Items</h2>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Daily Limit</th>
+                <th>Weekly Limit</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for item in items %}
+        <tr>
+            <td>{{ item.Name }}</td>
+            <td>{{ item.Category }}</td>
+            <td>{{ item.Daily_Limit }}</td>
+            <td>{{ item.Weekly_Limit }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ url_for('dashboard') }}" class="back-link">← Back to Dashboard</a>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

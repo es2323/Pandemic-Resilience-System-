@@ -1,0 +1,50 @@
+<!-- merchant_sales.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Merchant Sales</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #F3F3E0; padding: 30px; }
+        h2 { color: #183B4E; margin-bottom: 20px; }
+        .table thead { background-color: #27548A; color: white; }
+        .btn-back { background-color: #DDA853; color: #183B4E; border: none; margin-top: 20px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Sales History</h2>
+    {% if sales %}
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Transaction ID</th>
+                <th>PRS ID</th>
+                <th>Name</th>
+                <th>Item</th>
+                <th>Quantity</th>
+                <th>Store</th>
+                <th>Purchase Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in sales %}
+            <tr>
+                <td>{{ row.Transaction_Id }}</td>
+                <td>{{ row.PRS_Id }}</td>
+                <td>{{ row.Name }}</td>
+                <td>{{ row.Item_Name }}</td>
+                <td>{{ row.Quantity_Purchased }}</td>
+                <td>{{ row.Store_Id }}</td>
+                <td>{{ row.Purchase_Date }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        <p>No sales records available.</p>
+    {% endif %}
+    <a href="{{ url_for('merchant_dashboard') }}" class="btn btn-back">Back to Dashboard</a>
+</div>
+</body>
+</html>
